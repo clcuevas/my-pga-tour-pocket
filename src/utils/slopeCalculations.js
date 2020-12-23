@@ -78,4 +78,48 @@ const calcRedSlope = (data) => {
   return count;
 };
 
-export { calcGreenSlope, calcYellowSlope, calcOrangeSlope, calcRedSlope };
+const getSlopeSum = (data) => {
+  const greenSlopeCount = calcGreenSlope(data);
+  const yellowSlopeCount = calcYellowSlope(data);
+  const orangeSlopeCount = calcOrangeSlope(data);
+  const redSlopeCount = calcRedSlope(data);
+
+  let sum =
+    greenSlopeCount + yellowSlopeCount + orangeSlopeCount + redSlopeCount;
+
+  if (data.elevationType === 'down') {
+    // We need to adjust the sum when working with a downhill putt.
+    // For every 2 inches, we want to add 1 to our sum.
+    const adjustment = Math.floor(
+      Number.parseInt(data.elevationInches, 10) / 2,
+    );
+
+    sum += adjustment;
+  }
+
+  return sum;
+};
+
+const calcElevation = (data) => {
+  const feetHole = Number.parseInt(data.holeFeet, 10);
+  const inches = Number.parseInt(data.elevationInches, 10);
+
+  const feetAdjustment = data.elevationType === 'up' ? inches * 1.5 : inches;
+  const adjustedTotalFeet =
+    data.elevationType === 'up'
+      ? feetHole + feetAdjustment
+      : feetHole - feetAdjustment;
+
+  const isFiftyFeetOrMore = adjustedTotalFeet >= 50;
+
+  return {
+    feetAdjustment,
+    adjustedTotalFeet: isFiftyFeetOrMore
+      ? adjustedTotalFeet / 2
+      : adjustedTotalFeet,
+    isFiftyFeetOrMore,
+    direction: data.elevationType,
+  };
+};
+
+export { getSlopeSum, calcElevation };

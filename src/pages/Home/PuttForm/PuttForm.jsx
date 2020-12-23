@@ -1,45 +1,55 @@
 import React from 'react';
 import { Form } from 'react-final-form';
+import styled from 'styled-components';
 
-import {
-  calcGreenSlope,
-  calcYellowSlope,
-  calcOrangeSlope,
-  calcRedSlope,
-} from '../../../utils/slopeCalculations';
+import { calcElevation, getSlopeSum } from '../../../utils/slopeCalculations';
 
 import GreenSlopes from './components/GreenSlopes';
 import YellowSlopes from './components/YellowSlopes';
 import OrangeSlopes from './components/OrangeSlopes';
 import RedSlopes from './components/RedSlopes';
+import ElevationField from './components/ElevationField';
 
-const PuttForm = () => {
+const Styled = {
+  Form: styled.form`
+    max-width: 500px;
+    width: 100%;
+  `,
+  SubmitButton: styled.button`
+    background-color: #4e9af1;
+    border: 2px solid #368def;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: #368def;
+    }
+  `,
+};
+
+const PuttForm = (props) => {
   const handleOnSubmit = (data) => {
-    // The data here is the "name" value we are adding to the <Field /> component.
-    // For example <Field name="greenSlopeType" />. The data will return an object
-    // with the key/value of { greenSlopeType: <option value> } (i.e. what the
-    // user selected).
-    const greenSlopeCount = calcGreenSlope(data);
-    const yellowSlopeCount = calcYellowSlope(data);
-    const orangeSlopeCount = calcOrangeSlope(data);
-    const redSlopeCount = calcRedSlope(data);
+    const elevationData = calcElevation(data);
+    const sum = getSlopeSum(data);
 
-    const sum =
-      greenSlopeCount + yellowSlopeCount + orangeSlopeCount + redSlopeCount;
-
-    console.log(sum);
+    props.renderResults({ clickCount: sum, elevationData });
   };
 
   return (
     <Form onSubmit={handleOnSubmit}>
       {(props) => (
-        <form onSubmit={props.handleSubmit}>
+        <Styled.Form onSubmit={props.handleSubmit}>
           <GreenSlopes />
           <YellowSlopes />
           <OrangeSlopes />
           <RedSlopes />
-          <button type="submit">Submit</button>
-        </form>
+          <ElevationField />
+          <Styled.SubmitButton type="submit">Submit</Styled.SubmitButton>
+        </Styled.Form>
       )}
     </Form>
   );

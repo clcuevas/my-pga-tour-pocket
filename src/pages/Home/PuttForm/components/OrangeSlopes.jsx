@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import SlopeField from './SlopeField';
+
+const Styled = {
+  Container: styled.div`
+    margin: 20px auto;
+  `,
+  Button: styled.button`
+    background-color: #ffa500;
+    border: 2px solid #ff7b00;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px;
+
+    &:hover {
+      background-color: #ff7b00;
+    }
+  `,
+};
 
 const OrangeSlopes = () => {
   const [slopeFormFieldCount, setSlopeFormFieldCount] = useState(0);
   const [slopeUserCreatedFields, setSlopeUserCreatedFields] = useState([]);
 
   return (
-    <div>
+    <Styled.Container>
       {slopeUserCreatedFields.map((FieldComponent, index) => (
         <div key={`orange-slope-field-${index + 1}`}>
           <FieldComponent
@@ -19,7 +39,7 @@ const OrangeSlopes = () => {
         </div>
       ))}
 
-      <button
+      <Styled.Button
         type="button"
         onClick={() => {
           setSlopeUserCreatedFields([...slopeUserCreatedFields, SlopeField]);
@@ -27,8 +47,8 @@ const OrangeSlopes = () => {
         }}
         disabled={slopeFormFieldCount === 3}>
         Add Orange Slope Field
-      </button>
-    </div>
+      </Styled.Button>
+    </Styled.Container>
   );
 };
 
