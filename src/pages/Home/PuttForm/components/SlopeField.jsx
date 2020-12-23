@@ -59,7 +59,6 @@ const GreenSlopeField = (props) => (
         {({ input, meta }) => (
           <Styled.FieldContentContainer>
             {props.label && <Styled.FieldLabel>Slope Type:</Styled.FieldLabel>}
-
             <Styled.FieldSelectContainer>
               <Styled.Select {...input}>
                 <option />
@@ -69,7 +68,6 @@ const GreenSlopeField = (props) => (
                   </option>
                 ))}
               </Styled.Select>
-
               {meta.error && meta.touched && (
                 <Styled.FieldError>{meta.error}</Styled.FieldError>
               )}

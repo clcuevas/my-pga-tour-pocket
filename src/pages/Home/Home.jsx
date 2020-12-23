@@ -9,16 +9,35 @@ const Styled = {
 
     align-items: center;
     flex-direction: column;
-    justify-content: center;
 
     margin-bottom: 50px;
   `,
-  SubmissionHeader: styled.div``,
-  ResultsContainer: styled.div``,
-  ResultsItem: styled.div``,
+  SubmissionContainer: styled.div`
+    max-width: 500px;
+    width: 100%;
+  `,
+  SubmissionHeader: styled.div`
+    margin: 10px auto;
+  `,
+  ResultsContainer: styled.div`
+    margin: 10px auto;
+  `,
+  ResultsItem: styled.div`
+    margin: 5px auto 5px 20px;
+  `,
   Button: styled.button`
-    border: 0.16em solid rgba(255, 255, 255, 0);
-    border-radiums: 2em;
+    background-color: #4e9af1;
+    border: 2px solid #368def;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 10px 20px;
+
+    &:hover {
+      background-color: #368def;
+    }
   `,
 };
 
@@ -41,24 +60,25 @@ const Home = () => {
       <h1>PGA Putting - Green Grid Reading</h1>
 
       {isFormSubmitted ? (
-        <>
+        <Styled.SubmissionContainer>
           <Styled.SubmissionHeader>
             Based on your input, our calculations suggest the below:
           </Styled.SubmissionHeader>
           <Styled.ResultsContainer>
             <Styled.ResultsItem>
-              Move {results.clickCount} clicks to either left or right.
+              Move {results.clickCount} clicks to either left or right
             </Styled.ResultsItem>
             <Styled.ResultsItem>
               {results.elevationData.direction === 'up' ? 'Add' : 'Substract'}{' '}
-              {results.elevationData.adjustedTotalFeet} feet.
+              {results.elevationData.adjustedTotalFeet} feet as total hole
+              distance
             </Styled.ResultsItem>
           </Styled.ResultsContainer>
 
           <Styled.Button type="button" onClick={restartForm}>
             Restart
           </Styled.Button>
-        </>
+        </Styled.SubmissionContainer>
       ) : (
         <PuttForm renderResults={handleData} />
       )}
