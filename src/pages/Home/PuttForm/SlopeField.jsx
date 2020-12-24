@@ -7,7 +7,7 @@ import {
   minValue,
   mustBeNumber,
   required,
-} from '../../../../utils/validators';
+} from '../../../utils/validators';
 
 const Styled = {
   Container: styled.div``,
@@ -48,23 +48,42 @@ const Styled = {
   `,
 };
 
+const slopes = [
+  { type: 'green', value: 1 },
+  { type: 'green', value: 2 },
+  { type: 'green', value: 3 },
+  { type: 'yellow', value: 4 },
+  { type: 'yellow', value: 5 },
+  { type: 'yellow', value: 6 },
+  { type: 'orange', value: 7 },
+  { type: 'orange', value: 8 },
+  { type: 'orange', value: 9 },
+  { type: 'red', value: 10 },
+  { type: 'red', value: 11 },
+  { type: 'red', value: 12 },
+];
+
+const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 const GreenSlopeField = (props) => (
   <Styled.Container>
-    {props.label && props.displayHeader && (
-      <Styled.Header>{props.label} Slopes</Styled.Header>
-    )}
+    {props.displayHeader && <Styled.Header>Slopes</Styled.Header>}
 
     <Styled.FieldContainer>
-      <Field name={`${props.fieldName}Type`} validate={required}>
+      <Field
+        name={`${props.fieldName}Type${props.indexLabel}`}
+        validate={required}>
         {({ input, meta }) => (
           <Styled.FieldContentContainer>
-            {props.label && <Styled.FieldLabel>Slope Type:</Styled.FieldLabel>}
+            <Styled.FieldLabel>Slope Type</Styled.FieldLabel>
             <Styled.FieldSelectContainer>
               <Styled.Select {...input}>
                 <option />
-                {props.options.map((value, i) => (
+                {slopes.map(({ type, value }, i) => (
                   <option value={value} key={`option-${i + 1}`}>
-                    {props.label} {value}
+                    {capitalize(type)} {value}
                   </option>
                 ))}
               </Styled.Select>
@@ -77,11 +96,11 @@ const GreenSlopeField = (props) => (
       </Field>
 
       <Field
-        name={`${props.fieldName}Count`}
+        name={`${props.fieldName}Count${props.indexLabel}`}
         validate={composeValidators(required, mustBeNumber, minValue(1))}>
         {({ input, meta }) => (
           <Styled.FieldContentContainer>
-            <Styled.FieldLabel>No.</Styled.FieldLabel>
+            <Styled.FieldLabel>Slope Count</Styled.FieldLabel>
             <Styled.FieldInputContainer>
               <Styled.Input {...input} type="text" placeholder="Count" />
               {meta.error && meta.touched && (

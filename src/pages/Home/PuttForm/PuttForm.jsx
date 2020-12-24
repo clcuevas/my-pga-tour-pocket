@@ -4,11 +4,8 @@ import styled from 'styled-components';
 
 import { calcElevation, getSlopeSum } from '../../../utils/slopeCalculations';
 
-import GreenSlopes from './components/GreenSlopes';
-import YellowSlopes from './components/YellowSlopes';
-import OrangeSlopes from './components/OrangeSlopes';
-import RedSlopes from './components/RedSlopes';
-import ElevationField from './components/ElevationField';
+import Slopes from './Slopes';
+import ElevationField from './ElevationField';
 
 const Styled = {
   Form: styled.form`
@@ -18,6 +15,7 @@ const Styled = {
   SubmitButton: styled.button`
     background-color: #4e9af1;
     border: 2px solid #368def;
+    border-radius: 3px;
     color: white;
     cursor: pointer;
     font-size: 15px;
@@ -43,10 +41,7 @@ const PuttForm = (props) => {
     <Form onSubmit={handleOnSubmit}>
       {(props) => (
         <Styled.Form onSubmit={props.handleSubmit}>
-          <GreenSlopes />
-          <YellowSlopes />
-          <OrangeSlopes />
-          <RedSlopes />
+          <Slopes />
           <ElevationField />
           <Styled.SubmitButton type="submit">Submit</Styled.SubmitButton>
         </Styled.Form>
