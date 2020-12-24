@@ -7,7 +7,7 @@ import {
   minValue,
   mustBeNumber,
   required,
-} from '../../../../utils/validators';
+} from '../../../utils/validators';
 
 const Styled = {
   Container: styled.div`
