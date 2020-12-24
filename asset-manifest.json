@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/my-pga-tour-pocket/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/my-pga-tour-pocket/static/js/main.b753bcef.chunk.js",
-    "main.js.map": "/my-pga-tour-pocket/static/js/main.b753bcef.chunk.js.map",
+    "main.js": "/my-pga-tour-pocket/static/js/main.fc691c61.chunk.js",
+    "main.js.map": "/my-pga-tour-pocket/static/js/main.fc691c61.chunk.js.map",
     "runtime-main.js": "/my-pga-tour-pocket/static/js/runtime-main.7dbec3a9.js",
     "runtime-main.js.map": "/my-pga-tour-pocket/static/js/runtime-main.7dbec3a9.js.map",
-    "static/js/2.0d085854.chunk.js": "/my-pga-tour-pocket/static/js/2.0d085854.chunk.js",
-    "static/js/2.0d085854.chunk.js.map": "/my-pga-tour-pocket/static/js/2.0d085854.chunk.js.map",
+    "static/js/2.c9b6ab86.chunk.js": "/my-pga-tour-pocket/static/js/2.c9b6ab86.chunk.js",
+    "static/js/2.c9b6ab86.chunk.js.map": "/my-pga-tour-pocket/static/js/2.c9b6ab86.chunk.js.map",
     "static/js/3.7f1a40c1.chunk.js": "/my-pga-tour-pocket/static/js/3.7f1a40c1.chunk.js",
     "static/js/3.7f1a40c1.chunk.js.map": "/my-pga-tour-pocket/static/js/3.7f1a40c1.chunk.js.map",
     "index.html": "/my-pga-tour-pocket/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/my-pga-tour-pocket/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.0d085854.chunk.js.LICENSE.txt": "/my-pga-tour-pocket/static/js/2.0d085854.chunk.js.LICENSE.txt"
+    "static/js/2.c9b6ab86.chunk.js.LICENSE.txt": "/my-pga-tour-pocket/static/js/2.c9b6ab86.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7dbec3a9.js",
-    "static/js/2.0d085854.chunk.js",
+    "static/js/2.c9b6ab86.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.b753bcef.chunk.js"
+    "static/js/main.fc691c61.chunk.js"
   ]
 }
